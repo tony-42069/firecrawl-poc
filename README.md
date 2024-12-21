@@ -23,12 +23,14 @@ An AI-powered agent that autonomously researches trending technologies and gener
 ## 💻 Quick Start
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/tony-42069/firecrawl-poc
 cd firecrawl-poc
 ```
 
 2. Set up environment:
+
 ```bash
 python -m venv venv
 .\venv\Scripts\activate  # Windows
@@ -37,6 +39,7 @@ pip install -r requirements.txt
 ```
 
 3. Configure API keys:
+
 ```bash
 cp .env.example .env
 # Edit .env with your API keys
