@@ -15,7 +15,7 @@ class FirecrawlAgent:
         Focus on tools and frameworks that could be integrated with Firecrawl.
         Format the response as a structured list of technologies with their key features and potential use cases."""
         
-        message = await self.anthropic.messages.create(
+        message = self.anthropic.messages.create(
             model=self.model,
             max_tokens=1000,
             messages=[{
@@ -23,7 +23,7 @@ class FirecrawlAgent:
                 "content": prompt
             }]
         )
-        return message.content
+        return message.content[0].text
 
     async def generate_example_app(self, tech_stack, use_case):
         """Generate an example application using specified technology stack."""
@@ -36,7 +36,7 @@ class FirecrawlAgent:
         - Best practices
         Format as a structured markdown document."""
         
-        message = await self.anthropic.messages.create(
+        message = self.anthropic.messages.create(
             model=self.model,
             max_tokens=2000,
             messages=[{
@@ -44,15 +44,4 @@ class FirecrawlAgent:
                 "content": prompt
             }]
         )
-        return message.content
-
-# src/utils/config.py
-import os
-from dotenv import load_dotenv
-
-def load_config():
-    load_dotenv()
-    return {
-        "anthropic_api_key": os.getenv("ANTHROPIC_API_KEY"),
-        "model": "claude-3-opus-20240229"
-    }
+        return message.content[0].text
